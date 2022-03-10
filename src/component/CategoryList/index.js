@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Category from "./Category";
+import Endpoints from '../../api/Endpoints';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://apolis-grocery.herokuapp.com/api/category")
+      .get(`${Endpoints.CATEGORY_URL}`)
       .then((response) => {
         setCategories(response.data.data);
       })
