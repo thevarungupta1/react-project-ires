@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Endpoints from "../../api/Endpoints";
 import Product from "./Product";
+import { useParams } from 'react-router-dom';
 
 const Products = () => {
-  const catId = 3;
+  const { id } = useParams()
 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${Endpoints.PRODUCT_BY_CAT_ID + catId}`)
+      .get(`${Endpoints.PRODUCT_BY_CAT_ID + id}`)
       .then((response) => {
         setProducts(response.data.data);
       })
